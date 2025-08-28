@@ -1,0 +1,51 @@
+{
+  "restAPIRoot": "/srm-app/api/",
+  "enableAuth": false,
+  "port": 4200,
+  "sqlServerConfig": {
+    "name": "sqldb",
+    "connector": "loopback-connector-mssql",
+    "url": "mssql://user:password@localhost:1433/my_app_db",
+    "host": "localhost",
+    "port": 1433,
+    "user": "user",
+    "password": "",
+    "database": "",
+    "connectionTimeout": 5000,
+    "requestTimeout": 6000
+  },
+  "postgresConfig": {
+    "name": "pgsqldb",
+    "connector": "loopback-connector-postgresql",
+    "url": "",
+    "host": "localhost",
+    "port": 5432,
+    "user": "postgres",
+    "password": "Anil@123",
+    "database": "shift-roster-management-db",
+    "connectionTimeout": 5000,
+    "requestTimeout": 6000
+  },
+  "security": {
+    "cors": {
+      "origin": "*",
+      "allowedOrigins": [
+        "http://localhost:4200",
+        "http://localhost:3000",
+        "http://127.0.0.1:4200"
+      ],
+      "methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE",
+        "OPTIONS"
+      ],
+      "preflightContinue": false,
+      "optionsSuccessStatus": 204,
+      "credentials": true,
+      "maxAge": 86400
+    }
+  }
+}

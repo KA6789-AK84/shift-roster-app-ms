@@ -1,0 +1,37 @@
+{
+  "application": {
+    "port": 3000
+  },
+  "restAPIRoot": "/srm-app/api/",
+  "enableAuth": false,
+  "port": 4092,
+  "sqlServerConfig": {
+    "name": "sqldb",
+    "connector": "loopback-connector-mssql",
+    "url": "mssql://user:password@localhost:1433/my_app_db",
+    "host": "localhost",
+    "port": 1433,
+    "user": "user",
+    "password": "",
+    "database": "",
+    "connectionTimeout": 5000,
+    "requestTimeout": 6000
+  },
+  "postgresConfig": {
+    "name": "pgsqldb",
+    "connector": "loopback-connector-postgresql",
+    "url": "",
+    "host": "localhost",
+    "port": 5432,
+    "user": "user",
+    "password": "",
+    "database": "",
+    "connectionTimeout": 5000,
+    "requestTimeout": 6000
+  },
+  "security": {
+    "cors": {
+      "origin": "*"
+    }
+  }
+}
