@@ -106,19 +106,18 @@ export class UserController {
    */
   @post('/users/login')
   async login(@requestBody() credentials: {
-    username: string;
+    username: string,
     password: string
-  }): Promise<{
-    token: string
-  }> {
+  }): Promise<any> {
     try {
+      console.log("credentials: ", credentials)
       const user = await this.userRepository.findByUsername(credentials.username);
       if (!user) {
         this.logger.warn(`Login attempt for non-existent user: ${credentials.username}`);
         throw new ExpectedError(401, AuthErrors.INVALID_CREDENTIALS);
       }
-
-      const passwordMatches = await this.passwordHasher.comparePassword(credentials.password, user.passwordHash);
+      console.log("user: ", user)
+      const passwordMatches = await this.passwordHasher.comparePassword(credentials.password, user.passwordHash, user.salt);
       if (!passwordMatches) {
         this.logger.warn(`Login attempt with incorrect password for user: ${credentials.username}`);
         throw new ExpectedError(401, AuthErrors.INVALID_CREDENTIALS);
@@ -144,7 +143,8 @@ export class UserController {
       const token = await this.jwtService.generateToken(userProfile); // Pass UserProfile here
       this.logger.info(`User logged in successfully: ${user.username}`);
       return {
-        token
+        token,
+        user: user
       };
     } catch (error) {
       this.logger.error(`Login failed for user ${credentials.username}: ${error.message}`);

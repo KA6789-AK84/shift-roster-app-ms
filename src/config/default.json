@@ -1,7 +1,7 @@
 {
   "restAPIRoot": "/srm-app/api/",
   "enableAuth": false,
-  "port": 4200,
+  "port": 4092,
   "sqlServerConfig": {
     "name": "sqldb",
     "connector": "loopback-connector-mssql",

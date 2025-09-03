@@ -30,7 +30,12 @@ export class PasswordHasherService {
     };
   }
 
-  async comparePassword(password: string, hash: string): Promise<boolean> {
+  async comparePassword(password: string, hash: string, salt: string): Promise<boolean> {
+    //const salt1 = await bcrypt.genSalt(this.saltRounds);
+    //console.log("Salt new", salt1)
+    const passwordHash = await bcrypt.hash(password, salt);
+    console.log("bcrypt.compare(password+salt, hash)", passwordHash)
+    console.log("bcrypt.compare(password+salt, hash)", hash)
     return bcrypt.compare(password, hash);
   }
 }

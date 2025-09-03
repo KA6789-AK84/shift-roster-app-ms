@@ -8,9 +8,9 @@ import {
 // Define the User model for authentication and user management
 @model({
   settings: {
-    strict: false,
-    schema: 'iam',
+    strict: true,
     postgresql: {
+      schema: 'iam',
       table: 'users'
     }
   }

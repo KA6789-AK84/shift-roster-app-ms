@@ -58,6 +58,7 @@
     "@loopback/service-proxy": "^8.0.3",
     "bcryptjs": "^3.0.2",
     "config": "^4.1.1",
+    "date-fns": "^4.1.0",
     "jsonwebtoken": "^9.0.2",
     "loopback-connector-mssql": "^3.8.0",
     "loopback-connector-postgresql": "^7.1.11",
